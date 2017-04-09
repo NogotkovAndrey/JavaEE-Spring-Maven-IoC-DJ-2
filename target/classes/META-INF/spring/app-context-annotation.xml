@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="annotation"/>
+  <bean id="messageProvider"
+        class="test.HelloWorldMessageProvider">
+      <constructor-arg value="message"/>
+  </bean>
+  <bean id="messageRenderer"
+        class="test.StandardOutMessageRenderer"
+        p:messageProvider-ref="constructorConfusion"/>
+    <bean id="message" class="java.lang.String"
+    c:_0="Andrew is excellent a boy!!!"/>
+  <bean id="constructorConfusion"
+  class="test.ConstructorConfusion">
+      <constructor-arg value="90"/>
+          </bean>
+</beans>
